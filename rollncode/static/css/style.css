@@ -1,0 +1,26 @@
+a
+{
+    display: block;
+    float: right;
+    margin-right: 25px;
+    padding: 10px 50px;
+    color: black;
+    border-radius : 15px;
+    border: 1px solid black;
+    text-decoration: none;
+    transition: color 0.5s , background 0.5s;
+}
+
+a:hover
+
+{
+    color : white;
+    background : blue;
+    border: 1px solid blue;
+ }
+
+table
+{
+	border-collapse: collapse;
+	border-spacing: 0;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+</head>
+<body>
+{% extends 'list.html' %}
+{% block content %}
+<h2>Поиск</h2>
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="">Введите фамилию писателя</label>
+    <input name="search" type="text">
+    <button type="submit">Поиск</button>
+</form>
+<h2>Результаты поиска по "{{query}}"</h2>
+{% if empty %}
+<p>{{empty}}</p>
+{% else %}
+<table border = '1' cellpadding="5px">
+    <tr style="background : blue; color: white;">
+        <td>Имя</td>
+        <td>Фамиилия</td>
+        <td>Отчество</td>
+        <td>Дата Рождения</td>
+        <td>Пол</td>
+    </tr>
+    {% for elem in result %}
+    <tr>
+        <td>{{elem.name}}</td>
+        <td>{{elem.surname}}</td>
+        <td>{{elem.patronymic}}</td>
+        <td>{{elem.date_birth}}</td>
+        <td>{{elem.gender}}</td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+    </table>
+{% endblock %}
+
+</body>
+</html>

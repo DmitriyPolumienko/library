@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href='{% static "css/style.css" %}'/>
+</head>
+
+{% if user.is_authenticated  %}
+<a href="logout">Выйти ({{user.username}})</a>
+{% block content %}
+<h2>Поиск по писателям</h2>
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="">Введите фамилию писателя</label>
+    <input name="search_a" type="text">
+    <button type="submit">Поиск</button>
+</form>
+<p></p>
+<table border = '1' cellpadding="5px">
+     <tr style="background : blue; color: white;">
+        <td>Имя</td>
+        <td>Фамиилия</td>
+        <td>Отчество</td>
+        <td>Дата Рождения</td>
+        <td>Пол</td>
+    </tr>
+    {% for elem in author %}
+    <tr>
+        <td>{{elem.name}}</td>
+        <td>{{elem.surname}}</td>
+        <td>{{elem.patronymic}}</td>
+        <td>{{elem.date_birth}}</td>
+        <td>{{elem.gender}}</td>
+    </tr>
+      {% endfor %}
+
+</table>
+
+<p></p>
+<table border = '1' cellpadding="5px">
+    <tr style="background : blue; color: white;">
+        <td>Название</td>
+        <td>Жанр</td>
+        <td>ISBN Код</td>
+        <td>Дата написания</td>
+    </tr>
+    {% for elem in books %}
+    <tr>
+        <td>{{elem.title}}</td>
+        <td>{{elem.genre}}</td>
+        <td>{{elem.isbn_code}}</td>
+        <td>{{elem.create_date}}</td>
+    </tr>
+      {% endfor %}
+
+
+</table>
+{% endblock %}
+{% else %}
+<div class="section">
+<a href="register">Регистрация на сайте</a>
+<a href="login">Авторизация</a>
+</div>
+{% endif %}
+
+
+
+</body>
+</html>

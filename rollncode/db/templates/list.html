@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+<h1>Authors</h1>
+
+<table border = '1' cellpadding="5px">
+    <tr style="background : blue; color: white;">
+        <td>ID</td>
+        <td>Имя</td>
+        <td>Фамиилия</td>
+        <td>Отчество</td>
+        <td>Дата Рождения</td>
+        <td>Пол</td>
+    </tr>
+    {% for author in all_authors %}
+    <tr>
+        <td>{{author.pk}}</td>
+        <td>{{author.name}}</td>
+        <td>{{author.surname}}</td>
+        <td>{{author.patronymic}}</td>
+        <td>{{author.date_birth}}</td>
+        <td>{{author.gender}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<h2>Поиск</h2>
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="">Введите фамилию писателя</label>
+    <input name="search" type="text">
+    <button type="submit">Поиск</button>
+</form>
+{% endblock %}
+</body>
+</html>
