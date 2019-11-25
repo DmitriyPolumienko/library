@@ -1,6 +1,6 @@
 # Libraries
 
-⋅⋅*certifi==2019.9.11
+-certifi==2019.9.11
 *chardet==3.0.4
 *Django==2.2.7
 *idna==2.8
