@@ -8,4 +8,9 @@ pytz==2019.3
 requests==2.22.0
 sqlparse==0.3.0
 urllib3==1.25.7
-# test
+
+
+# Created admin
+
+log: admin
+pass: 123456789
